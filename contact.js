@@ -1,22 +1,19 @@
+/* Sending Email from Contact Section */
+(function () {
+    emailjs.init("user_oh1B3JnEWlyp0zwpb");
+})();
+
 function sendMail() {
-  var params = {
-    name: document.getElementById("name").value,
-    email: document.getElementById("email").value,
-    message: document.getElementById("message").value,
-  };
+    let fullName = document.getElementById("name").value;
+    let userEmail = document.getElementById("email").value;
+    let userMessage = document.getElementById("message").value;
 
-  const serviceID = "service_i3vwd2s";
-  const templateID = "template_fc5cmnu";
+        var contactParams = {
+            from_name: fullName,
+            email_to: userEmail,
+            message: userMessage
+        };
 
-    emailjs.send(serviceID, templateID, params)
-    .then(res=>{
-        document.getElementById("name").value = "";
-        document.getElementById("email").value = "";
-        document.getElementById("message").value = "";
-        console.log(res);
-        alert("Your message sent successfully!!")
-
-    })
-    .catch(err=>console.log(err));
-
+        emailjs.send('service_i3vwd2s', 'template_fc5cmnu', contactParams).then(function (res) {alert("Success!");})
 }
+
